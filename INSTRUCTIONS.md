@@ -30,7 +30,8 @@ curl --request GET \
 ```
 ```json
 [
-  { "movieId": 365478,
+  {
+    "movieId": 365478,
     "title": "Man with the Screaming Brain",
     "actors": [331341, 132257, 126364, 1646]
   }, ...

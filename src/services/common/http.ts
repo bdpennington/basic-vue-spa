@@ -15,10 +15,10 @@ export default class HttpClient {
 
   private constructor() {
     const {
-      VUE_APP_API_HOST: apiHost,
-      VUE_APP_API_ACCESS_TOKEN_KEY: accessHeaderKey,
-      VUE_APP_API_ACCESS_TOKEN_VALUE: accessHeaderValue,
-    } = process.env;
+      VITE_API_HOST: apiHost,
+      VITE_API_ACCESS_TOKEN_KEY: accessHeaderKey,
+      VITE_API_ACCESS_TOKEN_VALUE: accessHeaderValue,
+    } = import.meta.env;
     const baseURL = new URL(`https://${apiHost}/api/`).toString();
 
     const headers = new AxiosHeaders();
@@ -31,8 +31,8 @@ export default class HttpClient {
     });
 
     this._initializeResponseInterceptor();
-    this.isDebug = process.env.VUE_APP_DEBUG
-      ? process.env.NODE_ENV === 'development'
+    this.isDebug = import.meta.env.VITE_DEBUG === '1'
+      ? import.meta.env.DEV
       : false;
   }
 
