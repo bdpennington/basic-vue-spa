@@ -12,7 +12,7 @@ module.exports = {
   plugins: ['@typescript-eslint'],
   parser: 'vue-eslint-parser',
   parserOptions: {
-    parser: "@typescript-eslint/parser",
+    parser: '@typescript-eslint/parser',
     ecmaVersion: 'latest',
   },
   rules: {
@@ -21,11 +21,12 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/ban-ts-comment': 'error',
     'vue/multi-word-component-names': 'off',
+    // The following are formatting related, which I'm letting Prettier deal with it
     'max-len': 'off',
-    'object-curly-spacing': 'off', // let Prettier deal with it
-    indent: 'off', // let Prettier with it
-    'quote-props': 'off', // let Prettier with it
-    'comma-dangle': 'off', // let Prettier with it
+    'object-curly-spacing': 'off',
+    indent: 'off',
+    'quote-props': 'off',
+    'comma-dangle': 'off',
   },
   overrides: [
     // Turned off these rules for test files so that the linter output

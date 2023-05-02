@@ -1,6 +1,7 @@
 {
   "editor.detectIndentation": true,
   "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
   "editor.insertSpaces": true,
   "editor.tabSize": 2,
   "editor.guides.bracketPairs": "active",
@@ -39,8 +40,5 @@
     "jsonc",
     "json5"
   ],
-  "prettier.enable": false,
-  "prettier.printWidth": 200,
-  "prettier.semi": true,
-  "prettier.singleQuote": true
+  "prettier.enable": true,
 }

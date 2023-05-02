@@ -22,10 +22,12 @@ fright
 getscript
 iframe
 iheart
+IMDB
 infographic
 infographics
 interwebs
 kanban
+Keanu
 keyup
 knowledgebase
 lazyload
