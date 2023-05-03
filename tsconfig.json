@@ -13,12 +13,13 @@
     "skipLibCheck": true,
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
-    "noUnusedLocals": true,
     "strictNullChecks": true,
+    "noImplicitAny": false,
     "allowJs": true,
     "forceConsistentCasingInFileNames": true,
     "types": [
-      "vite/client"
+      "vite/client",
+      "unplugin-icons/types/vue"
     ],
     "paths": {
       "@/*": [

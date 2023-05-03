@@ -3,8 +3,8 @@ import { createPinia } from 'pinia';
 import { createRouter, createWebHistory } from 'vue-router';
 import routes from '@/routes';
 import App from '@/App.vue';
-
-import './styles/main.css';
+import('focus-visible');
+import './styles/main.scss';
 
 const app = createApp(App);
 const pinia = createPinia();
