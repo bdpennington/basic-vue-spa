@@ -40,7 +40,18 @@ watch(
         >
       </RouterLink>
 
-      <div class="links" />
+      <nav class="nav-links">
+        <ul class="nav-list">
+          <RouterLink
+            class="nav-link"
+            to="/"
+          >
+            <li :class="['nav-item', { selected: route.path === '/' }]">
+              Home
+            </li>
+          </RouterLink>
+        </ul>
+      </nav>
     </div>
 
     <div class="right-column">
@@ -51,8 +62,6 @@ watch(
       >
         <IconGitHub class="github-link" />
       </a>
-
-      <div class="mobile-menu" />
     </div>
   </header>
 </template>
@@ -97,12 +106,46 @@ watch(
 
     .logo-link {
       text-decoration: none;
+      margin-right: 12px;
 
       .logo-image {
         height: 48px;
         width: auto;
         aspect-ratio: 186 / 109 auto;
         transform: translateY(3px); // Deal with bad cropping job. Oops.
+      }
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+
+      .nav-list {
+        display: flex;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        .nav-link {
+          color: #f0f6fc;
+          font-size: 24px;
+          border-bottom: 4px solid transparent;
+
+          .nav-item {
+            cursor: pointer;
+            padding-bottom: 2px;
+            margin-top: 2px;
+            transition: border-bottom 0.2s ease-in-out;
+
+            // &:hover {
+            // }
+
+            &.selected {
+              border-bottom: 4px solid #f0f6fc;
+            }
+          }
+        }
       }
     }
   }
@@ -112,7 +155,6 @@ watch(
     height: 100%;
 
     .github-link {
-      // display: none;
       display: flex;
       align-items: center;
       color: #f0f6fc;
