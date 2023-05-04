@@ -31,9 +31,8 @@ export default class HttpClient {
     });
 
     this._initializeResponseInterceptor();
-    this.isDebug = import.meta.env.VITE_DEBUG === '1'
-      ? import.meta.env.DEV
-      : false;
+    this.isDebug =
+      import.meta.env.VITE_DEBUG === '1' ? import.meta.env.DEV : false;
   }
 
   public static getInstance(): HttpClient {
@@ -54,7 +53,7 @@ export default class HttpClient {
     });
   }
 
-  public post<T, D>(url: string, data: D): Promise<T> {
+  public post<T, D>(url: string, data?: D): Promise<T> {
     return this.axiosInstance.post<T>(url, data).then((res) => {
       return res.data;
     });

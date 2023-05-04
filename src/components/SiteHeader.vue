@@ -1,17 +1,17 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
-import { useRoute } from 'vue-router'
+import { ref, watch } from 'vue';
+import { useRoute } from 'vue-router';
 import IconGitHub from '~icons/mdi/github';
 
-const route = useRoute()
-const skipLink = ref<HTMLAnchorElement>()
+const route = useRoute();
+const skipLink = ref<HTMLAnchorElement>();
 
 watch(
   () => route.path,
   () => {
-    skipLink.value?.focus()
+    skipLink.value?.focus();
   }
-)
+);
 </script>
 
 <template>
@@ -19,33 +19,23 @@ watch(
     <div class="left-column">
       <ul class="skip-links">
         <li>
-          <a
-            ref="skipLink"
-            href="#main"
-            class="skip-link"
-          >
+          <a ref="skipLink" href="#main" class="skip-link">
             Skip to main content
           </a>
         </li>
       </ul>
 
-      <RouterLink
-        class="logo-link"
-        to="/"
-      >
+      <RouterLink class="logo-link" to="/">
         <img
           src="@/assets/header/logo.png"
           alt="Site logo"
           class="logo-image"
-        >
+        />
       </RouterLink>
 
       <nav class="nav-links">
         <ul class="nav-list">
-          <RouterLink
-            class="nav-link"
-            to="/"
-          >
+          <RouterLink class="nav-link" to="/">
             <li :class="['nav-item', { selected: route.path === '/' }]">
               Home
             </li>
@@ -73,8 +63,8 @@ watch(
   align-items: center;
   padding: 16px 16px;
   height: 80px;
-  background-color: #161b22;
-  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1);
+  background-color: var(--header-bg);
+  box-shadow: var(--shadow-1);
 
   .left-column {
     display: flex;
@@ -97,9 +87,9 @@ watch(
 
         &:focus {
           opacity: 1;
-          background-color: white;
+          background-color: var(--white);
           padding: 0.5rem;
-          border: 1px solid black;
+          border: 1px solid var(--black);
         }
       }
     }
@@ -128,21 +118,19 @@ watch(
         list-style: none;
 
         .nav-link {
-          color: #f0f6fc;
+          color: var(--text-1);
           font-size: 24px;
           border-bottom: 4px solid transparent;
+          text-decoration: none;
 
           .nav-item {
             cursor: pointer;
             padding-bottom: 2px;
             margin-top: 2px;
-            transition: border-bottom 0.2s ease-in-out;
-
-            // &:hover {
-            // }
+            transition: border-bottom 0.2s var(--ease-in-out-1);
 
             &.selected {
-              border-bottom: 4px solid #f0f6fc;
+              border-bottom: 4px solid var(--text-1);
             }
           }
         }
@@ -157,7 +145,7 @@ watch(
     .github-link {
       display: flex;
       align-items: center;
-      color: #f0f6fc;
+      color: var(--text-1);
       height: 32px;
       width: auto;
       text-decoration: none;

@@ -1,0 +1,45 @@
+// @import url('variables.scss');
+
+p, li {
+  color: var(--text-1);
+  line-height: 28px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+li,
+p {
+  overflow-wrap: break-word;
+  font-family: var(--font-sans);
+  color: var(--text-1)
+}
+
+a {
+  font-weight: 500;
+  color: var(--brand);
+  text-decoration-style: dotted;
+
+  &:hover {
+    color: var(--brand-light);
+    text-decoration: underline;
+  }
+}
+
+h1, h2 {
+  font-weight: var(--font-weight-6);
+  letter-spacing: var(--font-letterspacing-0);
+}
+
+h1, .h1 {
+  line-height: 36px;
+  font-size: var(--font-size-6);
+}
+
+h2, .h2 {
+  line-height: 28px;
+  font-size: var(--font-size-5);
+}

@@ -9,7 +9,7 @@ export default class ValidationService {
     return 'validation';
   }
 
-  public validateResult(data: any): Promise<ValidationResponse> {
+  public validateResult(data: number[]): Promise<ValidationResponse> {
     return this.http.post(`${this.validationPrefix}`, data);
   }
 }

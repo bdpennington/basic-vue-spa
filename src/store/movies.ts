@@ -15,7 +15,7 @@ export const useMovieStore = defineStore('movies', () => {
     } catch (_err) {
       console.log(_err);
     }
-  }
+  };
 
   return { movies, getMovies };
 });

@@ -13,4 +13,8 @@ import MobileFooter from '@/components/MobileFooter.vue';
   <MobileFooter />
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+#main {
+  margin: 0 12px 24px 12px;
+}
+</style>

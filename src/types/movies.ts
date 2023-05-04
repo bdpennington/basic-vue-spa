@@ -4,4 +4,4 @@ export type Movie = {
   movieId: number;
   title: string;
   actors: number[];
-}
+};

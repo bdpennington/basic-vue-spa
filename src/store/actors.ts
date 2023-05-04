@@ -9,7 +9,9 @@ export const useActorStore = defineStore('actors', () => {
   const actors = reactive<Actor[]>([]);
 
   const actorsById = computed(() => {
-    return Object.fromEntries(actors.map(({ actorId, name }) => [actorId, name]));
+    return Object.fromEntries(
+      actors.map(({ actorId, name }) => [actorId, name])
+    );
   });
 
   const getActors = async () => {
@@ -19,7 +21,7 @@ export const useActorStore = defineStore('actors', () => {
     } catch (_err) {
       console.log(_err);
     }
-  }
+  };
 
   return { actors, getActors, actorsById };
 });

@@ -1,0 +1,106 @@
+:root {
+  // Colors
+  --white: #ffffff;
+  --black: #000000;
+  --gray: #8e8e93;
+  --text-light-1: rgba(60, 60, 67);
+  --text-light-2: rgba(60, 60, 67, .75);
+  --text-light-3: rgba(60, 60, 67, .33);
+  --text-dark-1: rgba(255, 255, 245, .86);
+  --text-dark-2: rgba(235, 235, 245, .6);
+  --text-dark-3: rgba(235, 235, 245, .38);
+  --green: #10b981;
+  --green-light: #34d399;
+  --green-lighter: #6ee7b7;
+  --green-dark: #059669;
+  --green-darker: #047857;
+  --yellow: #d97706;
+  --red: #f43f5e;
+  --bg: #ffffff;
+  --header-bg: var(--bg-soft-mute);
+  --bg-soft: #f6f6f7;
+  --bg-soft-up: #f9f9fa;
+  --bg-soft-mute: #e3e3e5;
+  --text-1: var(--text-light-1);
+  --text-2: var(--text-light-2);
+  --text-3: var(--text-light-3);
+  --brand: var(--green);
+  --brand-light: var(--green-light);
+  --brand-lighter: var(--green-lighter);
+  --brand-dark: var(--green-dark);
+  --brand-darker: var(--green-darker);
+
+  --border: rgba(60, 60, 67, .29);
+  --divider: rgba(60, 60, 67, .12);
+  --gutter: rgba(60, 60, 67, .12);
+
+  --z-index-nav: 20;
+  --z-index-footer: 60
+
+  // Font
+  --font-sans: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+  --font-mono: Dank Mono, Operator Mono, Inconsolata, Fira Mono, ui-monospace, SF Mono, Monaco, Droid Sans Mono, Source Code Pro, monospace;
+  --font-weight-1: 100;
+  --font-weight-2: 200;
+  --font-weight-3: 300;
+  --font-weight-4: 400;
+  --font-weight-5: 500;
+  --font-weight-6: 600;
+  --font-weight-7: 700;
+  --font-weight-8: 800;
+  --font-weight-9: 900;
+
+  --font-letterspacing-0: -.02em;
+  --font-letterspacing-1: .025em;
+  --font-letterspacing-2: .050em;
+  --font-letterspacing-3: .075em;
+  --font-letterspacing-4: .150em;
+  --font-letterspacing-5: .500em;
+  --font-letterspacing-6: .750em;
+  --font-letterspacing-7: 1em;
+  --font-size-00: .5rem;
+  --font-size-0: .75rem;
+  --font-size-1: 1rem;
+  --font-size-2: 1.1rem;
+  --font-size-3: 1.25rem;
+  --font-size-4: 1.5rem;
+  --font-size-5: 2rem;
+  --font-size-6: 2.5rem;
+  --font-size-7: 3rem;
+  --font-size-8: 3.5rem;
+
+  // Border
+  --border-size-1: 1px;
+  --border-size-2: 2px;
+  --border-size-3: 4px;
+
+  // Radius
+  --radius-1: 2px;
+  --radius-2: 5px;
+  --radius-3: 1rem;
+  --radius-4: 2rem;
+  --radius-5: 4rem;
+  --radius-6: 8rem;
+  --radius-round: 1e5px;
+
+  // Shadow
+  --shadow-color: 220 3% 15%;
+  --shadow-strength: 1%;
+  --shadow-1: 0 1px 2px -1px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 9%));
+
+  @media (prefers-color-scheme: dark) {
+    --bg: #1e1e20;
+    --header-bg: #161b22;
+
+    --border: rgba(82, 82, 89, .68);
+    --divider: rgba(82, 82, 89, .32);
+    --gutter: #000000;
+
+    --text-1: var(--text-dark-1);
+    --text-2: var(--text-dark-2);
+    --text-3: var(--text-dark-3);
+
+    --shadow-color: 220 40% 2%;
+    --shadow-strength: 25%;
+  }
+}
