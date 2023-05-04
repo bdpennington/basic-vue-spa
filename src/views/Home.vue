@@ -191,6 +191,8 @@ hr {
 }
 
 .search {
+  margin-bottom: 24px;
+
   .search-form {
     display: flex;
     flex-direction: column;
