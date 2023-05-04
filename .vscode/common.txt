@@ -10,6 +10,7 @@ composables
 createandpublish
 cropperjs
 croppings
+Dafoe
 datepicker
 devtools
 discoverability
@@ -82,4 +83,5 @@ vuelidate
 vueuse
 vuex
 webwidget
+Willem
 zindex

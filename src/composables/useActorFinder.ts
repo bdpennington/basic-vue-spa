@@ -33,6 +33,21 @@ const awfulActors = computed(() => {
   };
 });
 
+const awesomeActors = computed(() => {
+  if (!actorStore.actors.length) return;
+
+  const dafoe = actorStore.actors.find(
+    ({ name }) => name === 'Willem Dafoe'
+  ) as Actor;
+  const goodman = actorStore.actors.find(
+    ({ name }) => name === 'John Goodman'
+  ) as Actor;
+  return {
+    goodman: goodman.actorId,
+    dafoe: dafoe.actorId,
+  };
+});
+
 const firstSelectedActor = computed(() => {
   return actorStore.actors.find(
     ({ actorId }) => actorId === firstSelectedActorId.value
@@ -83,6 +98,7 @@ export {
   setFirstActor,
   setSecondActor,
   awfulActors,
+  awesomeActors,
   sharedActors,
   getMoviesWithActorAndSharedActors,
 };

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useMovieStore } from '@/store/movies';
 import { useActorStore } from '@/store/actors';
 import ValidationServiceModule from '@/services/validation';
 import { ensureAndFetchData } from '@/composables/useLoadData';
@@ -7,9 +6,13 @@ import {
   setFirstActor,
   setSecondActor,
   awfulActors,
-  sharedActors,
+  awesomeActors,
   getMoviesWithActorAndSharedActors,
 } from '@/composables/useActorFinder';
+import CoStarTable from '@/components/CoStarTable.vue';
+import BaseButton from '@/components/BaseButton.vue';
+import IconCheck from '~icons/mdi/check';
+import IconInvalid from '~icons/mdi/close';
 
 import {
   computed,
@@ -20,11 +23,9 @@ import {
   onUnmounted,
   nextTick,
 } from 'vue';
-import { type Actor } from '@/types/actors';
 
 const ValidationService = new ValidationServiceModule();
 
-const movieStore = useMovieStore();
 const actorStore = useActorStore();
 
 const actor1 = ref<string>('');
@@ -40,10 +41,20 @@ const actorOptions = computed(() => {
 });
 
 const presetAwful = () => {
-  setFirstActor(Number(awfulActors.value?.keanu ?? NaN));
-  setSecondActor(Number(awfulActors.value?.cage ?? NaN));
   actor1.value = awfulActors.value?.keanu.toString() ?? '';
   actor2.value = awfulActors.value?.cage.toString() ?? '';
+};
+
+const isValidateButtonVisible = computed(() => {
+  return (
+    Number(actor1.value) === awfulActors.value?.keanu &&
+    Number(actor2.value) === awfulActors.value?.cage
+  );
+});
+
+const presetAwesome = () => {
+  actor1.value = awesomeActors.value?.goodman.toString() ?? '';
+  actor2.value = awesomeActors.value?.dafoe.toString() ?? '';
 };
 
 type DataRow = {
@@ -82,6 +93,8 @@ watch(
   { immediate: true }
 );
 
+const isValidated = ref<boolean | undefined>(undefined);
+
 async function validate() {
   presetAwful();
   await nextTick();
@@ -91,7 +104,12 @@ async function validate() {
     NCMovies: data.Actor2Movies,
   }));
 
-  ValidationService.validateResult(payload);
+  try {
+    await ValidationService.validateResult(payload);
+    isValidated.value = true;
+  } catch (error) {
+    isValidated.value = false;
+  }
 }
 
 onMounted(() => {
@@ -101,13 +119,13 @@ onUnmounted(() => undefined);
 </script>
 
 <template>
-  <h1 id="heading-1">Find Shared Co-Stars</h1>
+  <h1 id="costar-heading-1">Find Shared Co-Stars</h1>
   <p>
     Select two separate stars, and find out which co-starts they have both
     worked with.
   </p>
   <hr />
-  <section class="search">
+  <section class="search" aria-describedby="costar-heading-1">
     <form class="search-form" @submit.prevent="() => undefined">
       <select id="actor1" v-model="actor1" class="form-control" name="actor1">
         <option value="" disabled>Select Actor 1</option>
@@ -132,22 +150,36 @@ onUnmounted(() => undefined);
       </select>
 
       <p>
-        Or
-        <button @click="presetAwful">
+        <span style="margin-right: 8px">Or</span>
+        <BaseButton @click="presetAwful">
           Select the two worst actors automatically
-        </button>
+        </BaseButton>
+        <br /><br />
+        <span style="margin-right: 8px">Or</span>
+        <BaseButton @click="presetAwesome">
+          Select two awesome actors automatically
+        </BaseButton>
       </p>
     </form>
   </section>
 
-  <section class="results">
-    <h2>Results</h2>
-    <button @click="validate">Validate</button>
-    <ul>
-      <li v-for="actorId in sharedActors" :key="actorId">
-        {{ actorStore.actorsById[actorId] }}
-      </li>
-    </ul>
+  <section class="results" aria-labelledby="costar-result-heading">
+    <h2 id="costar-results-heading">Results</h2>
+
+    <BaseButton
+      class="validate-button"
+      v-if="isValidateButtonVisible"
+      variant="secondary"
+      @click="validate"
+    >
+      <div class="validate-button-content">
+        <span>Validate</span>
+        <IconInvalid v-if="isValidated === false" class="invalid-icon" />
+        <IconCheck v-if="isValidated === true" class="check-icon" />
+      </div>
+    </BaseButton>
+
+    <CoStarTable :actor1="actor1" :actor2="actor2" :tableData="tableData" />
   </section>
 </template>
 
@@ -168,6 +200,39 @@ hr {
       max-width: 400px;
       margin: 12px 0;
     }
+  }
+}
+
+.results {
+  padding-bottom: 48px;
+
+  .validate-button {
+    margin: 12px 0;
+
+    .validate-button-content {
+      display: flex;
+      align-items: center;
+
+      .check-icon {
+        color: var(--green-dark);
+        border: 2px solid var(--green-dark);
+        border-radius: var(--radius-round);
+      }
+
+      .invalid-icon {
+        color: var(--red);
+        border: 2px solid var(--red);
+        border-radius: var(--radius-round);
+      }
+
+      :first-child {
+        margin-right: 4px;
+      }
+    }
+  }
+
+  #costar-results-heading {
+    margin-bottom: 12px;
   }
 }
 </style>

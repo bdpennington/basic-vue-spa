@@ -15,6 +15,6 @@ import MobileFooter from '@/components/MobileFooter.vue';
 
 <style lang="scss" scoped>
 #main {
-  margin: 0 12px 24px 12px;
+  margin: 36px 24px;
 }
 </style>

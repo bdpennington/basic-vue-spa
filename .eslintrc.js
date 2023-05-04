@@ -21,6 +21,7 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/ban-ts-comment': 'error',
     'vue/multi-word-component-names': 'off',
+    'vue/comment-directive': 'off',
     // The following are formatting related, which I'm letting Prettier deal with it
     'max-len': 'off',
     'object-curly-spacing': 'off',

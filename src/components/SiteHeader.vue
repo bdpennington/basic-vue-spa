@@ -37,7 +37,7 @@ watch(
         <ul class="nav-list">
           <RouterLink class="nav-link" to="/">
             <li :class="['nav-item', { selected: route.path === '/' }]">
-              Home
+              Co-Stars
             </li>
           </RouterLink>
         </ul>
