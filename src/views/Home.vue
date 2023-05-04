@@ -11,6 +11,7 @@ import {
 } from '@/composables/useActorFinder';
 import CoStarTable from '@/components/CoStarTable.vue';
 import BaseButton from '@/components/BaseButton.vue';
+import BaseSelect from '@/components/BaseSelect.vue';
 import IconCheck from '~icons/mdi/check';
 import IconInvalid from '~icons/mdi/close';
 
@@ -45,17 +46,17 @@ const presetAwful = () => {
   actor2.value = awfulActors.value?.cage.toString() ?? '';
 };
 
+const presetAwesome = () => {
+  actor1.value = awesomeActors.value?.goodman.toString() ?? '';
+  actor2.value = awesomeActors.value?.dafoe.toString() ?? '';
+};
+
 const isValidateButtonVisible = computed(() => {
   return (
     Number(actor1.value) === awfulActors.value?.keanu &&
     Number(actor2.value) === awfulActors.value?.cage
   );
 });
-
-const presetAwesome = () => {
-  actor1.value = awesomeActors.value?.goodman.toString() ?? '';
-  actor2.value = awesomeActors.value?.dafoe.toString() ?? '';
-};
 
 type DataRow = {
   Name: string;
@@ -97,7 +98,7 @@ const isValidated = ref<boolean | undefined>(undefined);
 
 async function validate() {
   presetAwful();
-  await nextTick();
+  await nextTick(); // render cycle
   const payload = tableData.map((data) => ({
     Name: data.Name,
     KRMovies: data.Actor1Movies,
@@ -120,44 +121,36 @@ onUnmounted(() => undefined);
 
 <template>
   <h1 id="costar-heading-1">Find Shared Co-Stars</h1>
-  <p>
+  <p class="costar-description">
     Select two separate stars, and find out which co-starts they have both
     worked with.
   </p>
   <hr />
   <section class="search" aria-describedby="costar-heading-1">
     <form class="search-form" @submit.prevent="() => undefined">
-      <select id="actor1" v-model="actor1" class="form-control" name="actor1">
-        <option value="" disabled>Select Actor 1</option>
-        <option
-          v-for="option in actorOptions"
-          :key="option.value"
-          :value="option.value"
-        >
-          {{ option.label }}
-        </option>
-      </select>
+      <BaseSelect
+        class="form-control"
+        v-model="actor1"
+        :options="actorOptions"
+        placeholder="Select Actor 1"
+      />
 
-      <select id="actor2" v-model="actor2" class="form-control" name="actor2">
-        <option value="" disabled>Select Actor 2</option>
-        <option
-          v-for="option in actorOptions"
-          :key="option.value"
-          :value="option.value"
-        >
-          {{ option.label }}
-        </option>
-      </select>
+      <BaseSelect
+        class="form-control"
+        v-model="actor2"
+        :options="actorOptions"
+        placeholder="Select Actor 2"
+      />
 
       <p>
         <span style="margin-right: 8px">Or</span>
         <BaseButton @click="presetAwful">
-          Select the two worst actors automatically
+          Select awful actors for me
         </BaseButton>
         <br /><br />
         <span style="margin-right: 8px">Or</span>
         <BaseButton @click="presetAwesome">
-          Select two awesome actors automatically
+          Select awesome actors for me
         </BaseButton>
       </p>
     </form>
@@ -187,6 +180,10 @@ onUnmounted(() => undefined);
 hr {
   background-color: var(--divider);
   margin: 12px 0;
+}
+
+#costar-heading-1 {
+  margin-bottom: 12px;
 }
 
 .search {

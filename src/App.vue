@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import SiteHeader from '@/components/SiteHeader.vue';
-import MobileFooter from '@/components/MobileFooter.vue';
 </script>
 
 <template>
@@ -9,8 +8,6 @@ import MobileFooter from '@/components/MobileFooter.vue';
   <main id="main">
     <RouterView />
   </main>
-
-  <MobileFooter />
 </template>
 
 <style lang="scss" scoped>

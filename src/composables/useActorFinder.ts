@@ -2,8 +2,6 @@ import { useMovieStore } from '@/store/movies';
 import { useActorStore } from '@/store/actors';
 import { computed, ref } from 'vue';
 import { type Actor, type ActorMovieData } from '@/types/actors';
-import { type ValidationRequest } from '@/types/validation';
-import { type Movie } from '@/types/movies';
 
 const movieStore = useMovieStore();
 const actorStore = useActorStore();
@@ -46,17 +44,6 @@ const awesomeActors = computed(() => {
     goodman: goodman.actorId,
     dafoe: dafoe.actorId,
   };
-});
-
-const firstSelectedActor = computed(() => {
-  return actorStore.actors.find(
-    ({ actorId }) => actorId === firstSelectedActorId.value
-  );
-});
-const secondSelectedActor = computed(() => {
-  return actorStore.actors.find(
-    ({ actorId }) => actorId === secondSelectedActorId.value
-  );
 });
 
 const actorsWhoStarredWithFirstActor = computed(() => {
