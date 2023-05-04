@@ -1,5 +1,5 @@
 import HttpClient from '@/services/common/http';
-import { type ValidationResponse } from '@/types/validation';
+import { type ValidationRequest } from '@/types/validation';
 
 export default class ValidationService {
   private http: HttpClient = HttpClient.getInstance();
@@ -9,7 +9,7 @@ export default class ValidationService {
     return 'validation';
   }
 
-  public validateResult(data: number[]): Promise<ValidationResponse> {
+  public validateResult(data: any): Promise<void> {
     return this.http.post(`${this.validationPrefix}`, data);
   }
 }

@@ -1,7 +1,10 @@
-export type ValidationResponse = Validation[];
+import { type Actor } from './actors';
+import { type Movie } from './movies';
+
+export type ValidationRequest = Validation[];
 
 export type Validation = {
-  Name: string;
-  KRMovies: string[];
-  NCMovies: string[];
+  Name: Actor['name'];
+  KRMovies: Movie['title'];
+  NCMovies: Movie['title'];
 };

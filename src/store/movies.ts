@@ -1,12 +1,18 @@
 import { Movie } from '@/types/movies';
 import { defineStore } from 'pinia';
-import { reactive } from 'vue';
+import { computed, reactive } from 'vue';
 import MovieServiceModule from '@/services/movies';
 
 const MovieService = new MovieServiceModule();
 
 export const useMovieStore = defineStore('movies', () => {
   const movies = reactive<Movie[]>([]);
+
+  const moviesById = computed(() => {
+    return Object.fromEntries(
+      movies.map(({ movieId, title }) => [movieId, title])
+    );
+  });
 
   const getMovies = async () => {
     try {
@@ -17,5 +23,5 @@ export const useMovieStore = defineStore('movies', () => {
     }
   };
 
-  return { movies, getMovies };
+  return { movies, getMovies, moviesById };
 });

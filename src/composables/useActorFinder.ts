@@ -1,7 +1,9 @@
 import { useMovieStore } from '@/store/movies';
 import { useActorStore } from '@/store/actors';
-import { computed, reactive, watch, ref } from 'vue';
-import { type Actor } from '@/types/actors';
+import { computed, ref } from 'vue';
+import { type Actor, type ActorMovieData } from '@/types/actors';
+import { type ValidationRequest } from '@/types/validation';
+import { type Movie } from '@/types/movies';
 
 const movieStore = useMovieStore();
 const actorStore = useActorStore();
@@ -43,7 +45,6 @@ const secondSelectedActor = computed(() => {
 });
 
 const actorsWhoStarredWithFirstActor = computed(() => {
-  if (!firstSelectedActor.value) return [];
   const includedMovies = movieStore.movies
     .filter(({ actors }) => actors.includes(firstSelectedActorId.value))
     .flatMap(({ actors }) => actors);
@@ -51,7 +52,6 @@ const actorsWhoStarredWithFirstActor = computed(() => {
 });
 
 const actorsWhoStarredWithSecondActor = computed(() => {
-  if (!secondSelectedActor.value) return [];
   const includedMovies = movieStore.movies
     .filter(({ actors }) => actors.includes(secondSelectedActorId.value))
     .flatMap(({ actors }) => actors);
@@ -59,19 +59,30 @@ const actorsWhoStarredWithSecondActor = computed(() => {
 });
 
 const sharedActors = computed(() => {
-  return actorsWhoStarredWithFirstActor.value.filter((value) =>
-    actorsWhoStarredWithSecondActor.value.includes(value)
+  return actorsWhoStarredWithFirstActor.value.filter((actorId) =>
+    actorsWhoStarredWithSecondActor.value.includes(actorId)
   );
 });
 
-const sharedActorNames = computed(() => {
-  return sharedActors.value.map((actorId) => {
-    return actorStore.actorsById[actorId];
-  });
-});
+function getMoviesWithActorAndSharedActors(actorId: Actor['actorId']) {
+  return sharedActors.value.reduce((acc, _actorId) => {
+    const movieList = movieStore.movies
+      .filter(({ actors }) => {
+        return actors.includes(_actorId) && actors.includes(actorId);
+      })
+      .map(({ movieId }) => movieId);
 
-const sharedActorObject = computed(() => {
-  return actorStore.actors.filter(({ actorId }) => sharedActors.value.includes(actorId))
-});
+    acc[actorStore.actorsById[_actorId]] = movieList.map(
+      (movieId) => movieStore.moviesById[movieId]
+    );
+    return acc;
+  }, {} as ActorMovieData);
+}
 
-export { setFirstActor, setSecondActor, awfulActors, sharedActors, sharedActorObject };
+export {
+  setFirstActor,
+  setSecondActor,
+  awfulActors,
+  sharedActors,
+  getMoviesWithActorAndSharedActors,
+};
