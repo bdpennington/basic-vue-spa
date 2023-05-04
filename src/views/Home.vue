@@ -172,7 +172,11 @@ onUnmounted(() => undefined);
       </div>
     </BaseButton>
 
-    <CoStarTable :actor1="actor1" :actor2="actor2" :tableData="tableData" />
+    <CoStarTable v-if="tableData.length" :actor1="actor1" :actor2="actor2" :tableData="tableData" />
+    <div v-else class="no-results">
+      <h3>No results found</h3>
+      <p>Try changing the actors selected above</p>
+    </div>
   </section>
 </template>
 
@@ -230,6 +234,18 @@ hr {
 
   #costar-results-heading {
     margin-bottom: 12px;
+  }
+
+  .no-results {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+
+    h3 {
+      margin-bottom: 12px;
+    }
   }
 }
 </style>
