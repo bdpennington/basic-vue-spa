@@ -1,6 +1,9 @@
 <script setup lang="ts">
 withDefaults(
-  defineProps<{ type?: string; variant?: 'primary' | 'secondary' }>(),
+  defineProps<{
+    type?: 'button' | 'submit' | 'reset';
+    variant?: 'primary' | 'secondary';
+  }>(),
   {
     variant: 'primary',
     type: 'button',
@@ -9,7 +12,7 @@ withDefaults(
 </script>
 
 <template>
-  <button :class="['base-button', variant]">
+  <button :type="type" :class="['base-button', variant]">
     <slot />
   </button>
 </template>
