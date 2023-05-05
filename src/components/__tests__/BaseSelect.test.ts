@@ -30,14 +30,14 @@ describe('BaseSelect component', () => {
     expect(wrapper.props('options')).toEqual(options);
     expect(wrapper.findAll('option').at(1)?.text()).toBe(options[0].label);
     expect(wrapper.findAll('option').at(2)?.text()).toBe(options[1].label);
-  })
+  });
 
   it('should emit an event when the value changes (test two-way binding)', async () => {
     const wrapper = mount(BaseSelect, {
       props: {
         options: options,
         modelValue: '',
-        'onUpdate:modelValue': (e) => wrapper.setProps({ modelValue: e })
+        'onUpdate:modelValue': (e) => wrapper.setProps({ modelValue: e }),
       },
     });
 
@@ -45,5 +45,5 @@ describe('BaseSelect component', () => {
     expect(wrapper.props('modelValue')).toBe(options[0].value.toString());
     expect(wrapper.emitted()['update:modelValue']).toBeTruthy();
     expect(wrapper.emitted()['update:modelValue'].length).toBe(1);
-  })
+  });
 });
