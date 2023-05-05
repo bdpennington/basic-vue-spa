@@ -44,5 +44,5 @@ module.exports = {
       },
     },
   ],
-  ignorePatterns: ['**/*.json', '**/*.md', 'node_modules', 'dist'],
+  ignorePatterns: ['**/*.json', '**/*.md', '**/*.yaml', 'node_modules', 'dist'],
 };

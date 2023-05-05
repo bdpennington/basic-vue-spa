@@ -137,8 +137,6 @@ Project structure should feel pretty familiar
 - `src/services` contains stuff relevant to http calls to the API
 - `src/types` contains most of the project's TypeScript types
 
-The main driving factor for modularizing it the way I did was to make it easy to update existing commands, and add new ones.
-
 ### Testing Strategy
 
 My intention with the tests that I wrote is to simply demonstrate my knowledge around it. You will find mocked services, composable tests, and component tests. The testing is not exhaustive, but is hopefully a sufficient demo.
