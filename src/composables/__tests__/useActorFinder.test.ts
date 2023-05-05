@@ -1,5 +1,5 @@
-import { describe, it, expect, vi } from "vitest";
-import { ensureAndFetchData } from "@/composables/useLoadData";
+import { describe, it, expect, vi } from 'vitest';
+import { ensureAndFetchData } from '@/composables/useLoadData';
 import {
   setFirstActor,
   setSecondActor,
@@ -18,5 +18,5 @@ describe('useActorFinder composable', () => {
     setSecondActor(63); // Anthony Quinn
     expect(sharedActors.value).toHaveLength(0);
     expect(getMoviesWithActorAndSharedActors(124)).toEqual({}); // checks properties, not reference
-  })
-})
+  });
+});

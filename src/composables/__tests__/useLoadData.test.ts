@@ -1,7 +1,7 @@
-import { describe, it, expect, vi } from "vitest";
-import { ensureAndFetchData } from "@/composables/useLoadData";
-import { useMovieStore } from "@/store/movies";
-import { useActorStore } from "@/store/actors";
+import { describe, it, expect, vi } from 'vitest';
+import { ensureAndFetchData } from '@/composables/useLoadData';
+import { useMovieStore } from '@/store/movies';
+import { useActorStore } from '@/store/actors';
 
 vi.mock('@/services/movies');
 vi.mock('@/services/actors');
@@ -15,5 +15,5 @@ describe('useLoadData composable', () => {
     await ensureAndFetchData();
     expect(movieStore.movies.length).toBe(10);
     expect(actorStore.actors.length).toBe(10);
-  })
-})
+  });
+});

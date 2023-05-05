@@ -172,7 +172,12 @@ onUnmounted(() => undefined);
       </div>
     </BaseButton>
 
-    <CoStarTable v-if="tableData.length" :actor1="actor1" :actor2="actor2" :tableData="tableData" />
+    <CoStarTable
+      v-if="tableData.length"
+      :actor1="actor1"
+      :actor2="actor2"
+      :tableData="tableData"
+    />
     <div v-else class="no-results">
       <h3>No results found</h3>
       <p>Try changing the actors selected above</p>

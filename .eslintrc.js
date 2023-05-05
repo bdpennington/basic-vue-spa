@@ -23,6 +23,11 @@ module.exports = {
     'vue/multi-word-component-names': 'off',
     'vue/comment-directive': 'off',
     // The following are formatting related, which I'm letting Prettier deal with it
+    'vue/max-attributes-per-line': 'off',
+    'vue/attributes-order': 'off',
+    'vue/singleline-html-element-content-newline': 'off',
+    'vue/attribute-hyphenation': 'off',
+    'vue/html-self-closing': 'off',
     'max-len': 'off',
     'object-curly-spacing': 'off',
     indent: 'off',
