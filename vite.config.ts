@@ -20,6 +20,11 @@ export default defineConfig({
 
   // https://github.com/vitest-dev/vitest
   test: {
+    globals: true,
     environment: 'jsdom',
+    setupFiles: [__dirname + '/vitest.setup.ts'],
+    deps: {
+      inline: ['vue', 'vuex', 'vue-router'],
+    },
   },
 })

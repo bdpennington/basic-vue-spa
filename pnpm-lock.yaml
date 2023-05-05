@@ -11,7 +11,6 @@ specifiers:
   axios: ^1.4.0
   eslint: ^8.38.0
   eslint-plugin-vue: ^9.11.0
-  focus-visible: ^5.2.0
   jsdom: ^21.1.1
   lint-staged: ^13.2.1
   pinia: ^2.0.35
@@ -31,7 +30,6 @@ specifiers:
 dependencies:
   '@vueuse/core': 9.13.0_vue@3.2.47
   axios: 1.4.0
-  focus-visible: 5.2.0
   pinia: 2.0.35_dtjfskxukdxv24psui2m5c75zy
   vue: 3.2.47
   vue-router: 4.1.6_vue@3.2.47
@@ -1447,10 +1445,6 @@ packages:
   /flatted/3.2.7:
     resolution: {integrity: sha512-5nqDSxl8nn5BSNxyR3n4I6eDmbolI6WT+QqR547RwxQapgjQBmtktdP+HTBb/a/zLsbzERTONyUB5pefh5TtjQ==}
     dev: true
-
-  /focus-visible/5.2.0:
-    resolution: {integrity: sha512-Rwix9pBtC1Nuy5wysTmKy+UjbDJpIfg8eHjw0rjZ1mX4GNLz1Bmd16uDpI3Gk1i70Fgcs8Csg2lPm8HULFg9DQ==}
-    dev: false
 
   /follow-redirects/1.15.2:
     resolution: {integrity: sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==}
