@@ -1,5 +1,5 @@
 :root {
-  // Colors
+  /* Colors */
   --white: #ffffff;
   --black: #000000;
   --gray: #8e8e93;
@@ -37,7 +37,7 @@
   --z-index-nav: 20;
   --z-index-footer: 60
 
-  // Font
+  /* Font */
   --font-sans: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
   --font-mono: Dank Mono, Operator Mono, Inconsolata, Fira Mono, ui-monospace, SF Mono, Monaco, Droid Sans Mono, Source Code Pro, monospace;
   --font-weight-1: 100;
@@ -69,12 +69,12 @@
   --font-size-7: 3rem;
   --font-size-8: 3.5rem;
 
-  // Border
+  /* Borders */
   --border-size-1: 1px;
   --border-size-2: 2px;
   --border-size-3: 4px;
 
-  // Radius
+  /* Radius */
   --radius-1: 2px;
   --radius-2: 5px;
   --radius-3: 1rem;
@@ -83,7 +83,7 @@
   --radius-6: 8rem;
   --radius-round: 1e5px;
 
-  // Shadow
+  /* Shadows */
   --shadow-color: 220 3% 15%;
   --shadow-strength: 1%;
   --shadow-1: 0 1px 2px -1px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 9%));

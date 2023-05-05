@@ -19,8 +19,7 @@ body,
 body {
   background-color: var(--bg);
 }
-
-// Visible only to screen readers
+/* Visible only to screen readers */
 .hidden-visually {
   position: absolute;
   overflow: hidden;
