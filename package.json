@@ -1,12 +1,12 @@
 {
-  "name": "chmura-work-sample",
+  "name": "basic-vue-spa",
   "version": "1.0.0",
   "private": true,
   "packageManager": "pnpm@8.2.0",
   "description": "Work sample",
   "repository": {
     "type": "git",
-    "url": "https://github.com/bdpennington/chmura-work-sample"
+    "url": "https://github.com/bdpennington/basic-vue-spa"
   },
   "engines": {
     "node": "^18.0.0"

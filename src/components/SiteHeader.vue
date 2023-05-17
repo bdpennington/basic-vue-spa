@@ -46,7 +46,7 @@ watch(
 
     <div class="right-column">
       <a
-        href="https://github.com/bdpennington/chmura-work-sample"
+        href="https://github.com/bdpennington/basic-vue-spa"
         target="_blank"
         rel="noopener noreferrer"
       >
