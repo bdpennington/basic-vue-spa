@@ -26,12 +26,12 @@ const modelledValue = computed({
 
 <template>
   <select
-    id="actor1"
+    :id="id"
+    :name="name || id"
     v-model="modelledValue"
     class="form-control"
-    name="actor1"
   >
-    <option value="" disabled>Select Actor 1</option>
+    <option v-if="placeholder" value="" disabled>{{ placeholder }}</option>
     <option v-for="option in options" :key="option.value" :value="option.value">
       {{ option.label }}
     </option>

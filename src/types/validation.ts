@@ -5,6 +5,6 @@ export type ValidationRequest = Validation[];
 
 export type Validation = {
   Name: Actor['name'];
-  KRMovies: Movie['title'];
-  NCMovies: Movie['title'];
+  KRMovies: Movie['title'][];
+  NCMovies: Movie['title'][];
 };

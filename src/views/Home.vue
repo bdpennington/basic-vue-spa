@@ -59,9 +59,9 @@ const isValidateButtonVisible = computed(() => {
 });
 
 type DataRow = {
-  Name: string;
-  Actor1Movies: string[];
-  Actor2Movies: string[];
+  coStar: string;
+  actor1Movies: string[];
+  actor2Movies: string[];
 };
 
 const tableData = reactive<DataRow[]>([]);
@@ -74,9 +74,9 @@ function setTableData() {
 
   Object.entries(actor1Set).map(([Name, movies]) => {
     result.push({
-      Name,
-      Actor1Movies: movies,
-      Actor2Movies: actor2Set[Name] ?? [],
+      coStar: Name,
+      actor1Movies: movies,
+      actor2Movies: actor2Set[Name] ?? [],
     });
   });
   return result;
@@ -100,9 +100,9 @@ async function validate() {
   presetAwful();
   await nextTick(); // render cycle
   const payload = tableData.map((data) => ({
-    Name: data.Name,
-    KRMovies: data.Actor1Movies,
-    NCMovies: data.Actor2Movies,
+    Name: data.coStar,
+    KRMovies: data.actor1Movies,
+    NCMovies: data.actor2Movies,
   }));
 
   try {

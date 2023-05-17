@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import BaseSimpleTable from '@/components/BaseSimpleTable.vue';
 import { useActorStore } from '@/store/actors';
+import { computed } from 'vue';
 
 const actorStore = useActorStore();
 
@@ -7,44 +9,28 @@ type Props = {
   actor1: string;
   actor2: string;
   tableData: {
-    Name: string;
-    Actor1Movies: string[];
-    Actor2Movies: string[];
+    coStar: string;
+    actor1Movies: string[];
+    actor2Movies: string[];
   }[];
 };
 
-defineProps<Props>();
+const props = defineProps<Props>();
+
+const tableData = computed(() => {
+  const tableHeaders = ['Name', `Starring w/ ${actorStore.actorsById[Number(props.actor1)]}`, `Starring w/ ${actorStore.actorsById[Number(props.actor2)]}`];
+  const tableRows = props.tableData.map((row) => {
+    return [row.coStar, row.actor1Movies.join(','), row.actor2Movies.join(',')];
+  });
+  return {
+    tableHeaders,
+    tableRows,
+  };
+});
 </script>
 
 <template>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Starring w/ {{ actorStore.actorsById[Number(actor1)] }}</th>
-        <th>Starring w/ {{ actorStore.actorsById[Number(actor2)] }}</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="row in tableData" :key="row.Name">
-        <td>{{ row.Name }}</td>
-        <td>
-          <ul>
-            <li v-for="movie in row.Actor1Movies" :key="movie">
-              {{ movie }}
-            </li>
-          </ul>
-        </td>
-        <td>
-          <ul>
-            <li v-for="movie in row.Actor2Movies" :key="movie">
-              {{ movie }}
-            </li>
-          </ul>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <BaseSimpleTable :tableHeaders="tableData.tableHeaders" :tableRows="tableData.tableRows" />
 </template>
 
 <style lang="scss" scoped></style>
