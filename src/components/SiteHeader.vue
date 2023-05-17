@@ -50,7 +50,7 @@ watch(
         target="_blank"
         rel="noopener noreferrer"
       >
-        <IconGitHub class="github-link" />
+        <IconGitHub class="github-link" aria-label="GitHub project" />
       </a>
     </div>
   </header>

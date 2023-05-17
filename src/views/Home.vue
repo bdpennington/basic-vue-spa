@@ -167,8 +167,8 @@ onUnmounted(() => undefined);
     >
       <div class="validate-button-content">
         <span>Validate</span>
-        <IconInvalid v-if="isValidated === false" class="invalid-icon" />
-        <IconCheck v-if="isValidated === true" class="check-icon" />
+        <IconInvalid v-if="isValidated === false" class="invalid-icon" aria-label="Failed result" />
+        <IconCheck v-if="isValidated === true" class="check-icon" aria-label="Successful result" />
       </div>
     </BaseButton>
 
